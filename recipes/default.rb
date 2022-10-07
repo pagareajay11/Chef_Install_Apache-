@@ -7,4 +7,4 @@
 
 include_recipe 'assignment_install_apache_server::install'
 include_recipe 'assignment_install_apache_server::config'
-include_recipe 'assignment_install_apache_server::cleanup'
+#include_recipe 'assignment_install_apache_server::cleanup'
