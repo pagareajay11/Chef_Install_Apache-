@@ -12,5 +12,5 @@ file '/var/www/html/index.html' do
 
 
   service apache_package_name do
-    action [:enable ,:start ]
+    action [:enable ]
   end

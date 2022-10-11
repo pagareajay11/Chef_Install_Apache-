@@ -1,28 +1,18 @@
-# Chef InSpec test for recipe assignment_install_apache_server::install
-
-# The Chef InSpec reference, with examples and extensive documentation, can be
-# found at https://docs.chef.io/inspec/resources/
-# require 'chefspec'
-unless os.windows?
-  # This is an example test, replace with your own test.
-  describe user('root'), :skip do
-    it { should exist }
-  end
+PACKAGE = attribute('package', 
+                    default: 'apache2',
+                    description: 'package name'
+                   )
+                   
+SERVICE = attribute('service', 
+                    default: 'apache2', 
+                    description: 'service name'
+                   )
+                   
+  describe package(PACKAGE) do
+  it { should be_installed }
 end
-
-# This is an example test, replace it with your own test.
-describe port(80), :skip do
-  it { should_not be_listening }
+describe service(SERVICE) do
+  it { should be_installed }
+  it { should be_enabled }
+  it { should be_running }
 end
-
-require 'chefspec'
-
-
-# describe 'assignment_install_apache::install' do
-   
-#    describe 'install apache package' do
-#      it do
-#       is_expected.to install_package(package_name)
-#    end
-
-# end
